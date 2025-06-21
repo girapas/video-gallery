@@ -3,39 +3,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Video Gallery</title>
+  <title>Video Gallery (Open in New Tab)</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; }
-    .video-list { margin-bottom: 20px; }
-    .video-list button { display: block; width: 100%; margin: 5px 0; padding: 10px; text-align: left; cursor: pointer; }
-    iframe { width: 100%; height: 480px; border: none; margin-top: 20px; }
-    p { font-size: 16px; }
+    .video-list { margin-top: 20px; }
+    .video-entry { margin-bottom: 15px; }
+    .video-entry a {
+      display: block;
+      font-size: 18px;
+      color: #0066cc;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+    .video-entry a:hover {
+      text-decoration: underline;
+    }
+    .description { font-size: 14px; color: #444; }
   </style>
 </head>
 <body>
-  <h1>My Video Gallery</h1>
-  <div class="video-list" id="videoMenu"></div>
+  <h1>Video Gallery</h1>
+  <p>Click a video title to open it in a new tab:</p>
+  <div class="video-list">
+    
+<div class="video-entry">
+  <a href="https://drive.google.com/open?id=1UpgcgjyOa9RAarl0hRKFHNAX3YmYB6t_" target="_blank" rel="noopener noreferrer">Sample Video 1</a>
+  <div class="description">This is the first sample video.</div>
+</div>
 
-  <iframe id="videoPlayer" allowfullscreen></iframe>
-  <p id="videoDescription"></p>
+<div class="video-entry">
+  <a href="https://drive.google.com/open?id=1TKDe3kBb_z8Mqw3YJevSdV9rWXQ1ubQy" target="_blank" rel="noopener noreferrer">Sample Video 2</a>
+  <div class="description">This is the second sample video.</div>
+</div>
 
-  <script>
-    const videos = [{"title": "Sample Video 1", "description": "This is the first sample video.", "id": "1UpgcgjyOa9RAarl0hRKFHNAX3YmYB6t_"}, {"title": "Sample Video 2", "description": "This is the second sample video.", "id": "1TKDe3kBb_z8Mqw3YJevSdV9rWXQ1ubQy"}, {"title": "Sample Video 3", "description": "This is the third sample video.", "id": "1W7nlILnCa7SgucdUT3qXIw4cHD-q4Fna"}];
+<div class="video-entry">
+  <a href="https://drive.google.com/open?id=1W7nlILnCa7SgucdUT3qXIw4cHD-q4Fna" target="_blank" rel="noopener noreferrer">Sample Video 3</a>
+  <div class="description">This is the third sample video.</div>
+</div>
 
-    const menu = document.getElementById("videoMenu");
-    const player = document.getElementById("videoPlayer");
-    const description = document.getElementById("videoDescription");
-
-    videos.forEach(video => {
-      const btn = document.createElement("button");
-      btn.textContent = video.title;
-      btn.onclick = () => {
-        player.src = `https://drive.google.com/uc?export=preview&id=${video.id}`;
-        description.textContent = video.description;
-        player.scrollIntoView({ behavior: "smooth" });
-      };
-      menu.appendChild(btn);
-    });
-  </script>
+  </div>
 </body>
 </html>
