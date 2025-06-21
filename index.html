@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Gallery</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .video-list { margin-bottom: 20px; }
+    .video-list button { display: block; width: 100%; margin: 5px 0; padding: 10px; text-align: left; cursor: pointer; }
+    iframe { width: 100%; height: 480px; border: none; margin-top: 20px; }
+    p { font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>My Video Gallery</h1>
+  <div class="video-list" id="videoMenu"></div>
+
+  <iframe id="videoPlayer" allowfullscreen></iframe>
+  <p id="videoDescription"></p>
+
+  <script>
+    const videos = [{"title": "Sample Video 1", "description": "This is the first sample video.", "id": "1UpgcgjyOa9RAarl0hRKFHNAX3YmYB6t_"}, {"title": "Sample Video 2", "description": "This is the second sample video.", "id": "1TKDe3kBb_z8Mqw3YJevSdV9rWXQ1ubQy"}, {"title": "Sample Video 3", "description": "This is the third sample video.", "id": "1W7nlILnCa7SgucdUT3qXIw4cHD-q4Fna"}];
+
+    const menu = document.getElementById("videoMenu");
+    const player = document.getElementById("videoPlayer");
+    const description = document.getElementById("videoDescription");
+
+    videos.forEach(video => {
+      const btn = document.createElement("button");
+      btn.textContent = video.title;
+      btn.onclick = () => {
+        player.src = `https://drive.google.com/uc?export=preview&id=${video.id}`;
+        description.textContent = video.description;
+        player.scrollIntoView({ behavior: "smooth" });
+      };
+      menu.appendChild(btn);
+    });
+  </script>
+</body>
+</html>
